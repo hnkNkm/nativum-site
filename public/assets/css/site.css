@@ -1,6 +1,14 @@
 /* Nativum 公式サイト サンプル — サイト固有スタイル */
 /* 原則: nv-* クラスの再定義はしない。トークン上書きとLP固有の微調整のみ。 */
 
+/* --- ヘッダーロゴ --- */
+.site-logo {
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin-inline-end: var(--nv-space-2);
+  border-radius: var(--nv-radius-md);
+}
+
 /* --- スキップリンク (フォーカス時のみ表示) --- */
 .skip-link {
   position: absolute;

@@ -6,6 +6,9 @@ result-*
 # macOS
 .DS_Store
 
+# 元画像 (リサイズ版のみ配信。OGP 用途等で必要になったら個別に追加)
+public/assets/img/icon.png
+
 # editor
 .vscode/
 .idea/
