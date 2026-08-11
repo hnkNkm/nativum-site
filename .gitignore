@@ -1,0 +1,12 @@
+# direnv / nix ビルド生成物
+.direnv/
+result
+result-*
+
+# macOS
+.DS_Store
+
+# editor
+.vscode/
+.idea/
+*.swp

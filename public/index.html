@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nativum — 実行時 JavaScript ゼロ、依存パッケージゼロ。HTML と CSS だけでモダンな UI を構築する Passive Native Web UI System。">
+  <title>Nativum — Modern UI, by the Web Platform.</title>
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/nativum.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">メインコンテンツへ移動</a>
+
+  <header class="nv-container" style="padding-block: var(--nv-space-4)">
+    <nav class="nv-nav" aria-label="メインナビゲーション">
+      <strong>Nativum</strong>
+      <a href="#features">特徴</a>
+      <a href="#components">コンポーネント</a>
+      <a href="#install">導入</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://github.com/hnkNkm/nativum" aria-label="GitHub リポジトリ (外部サイト)">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="nv-container-narrow nv-stack-lg">
+        <div class="nv-stack-sm">
+          <h1 id="hero-title">Modern UI, by the Web Platform.</h1>
+          <p>
+            Nativum は、JavaScript ランタイムや依存パッケージなしでモダンな Web UI を構築する
+            <strong>Passive Native Web UI System</strong> です。HTML そのものがコンポーネント API であり、
+            ブラウザが UI ランタイムです。
+          </p>
+        </div>
+        <div class="nv-cluster" style="justify-content: center">
+          <a href="#install">導入方法を見る</a>
+          <a href="https://github.com/hnkNkm/nativum" aria-label="GitHub リポジトリを開く (外部サイト)">GitHub リポジトリ</a>
+        </div>
+        <dl class="hero-stats">
+          <div>
+            <dt>0</dt>
+            <dd>JavaScript 実行時</dd>
+          </div>
+          <div>
+            <dt>0</dt>
+            <dd>依存パッケージ</dd>
+          </div>
+          <div>
+            <dt>1</dt>
+            <dd>読み込むファイル</dd>
+          </div>
+          <div>
+            <dt>MIT</dt>
+            <dd>ライセンス</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="features" class="nv-container nv-stack-lg" aria-labelledby="features-title" style="padding-block: var(--nv-space-8)">
+      <h2 id="features-title">設計原則</h2>
+      <div class="nv-grid">
+        <article class="nv-card">
+          <h3>Native First</h3>
+          <p>ブラウザに適切なネイティブ機能があれば、必ずそれを使います。ボタンは <code>&lt;button&gt;</code>、モーダルは <code>&lt;dialog&gt;</code>、開閉は <code>&lt;details&gt;</code>。再実装しません。</p>
+        </article>
+        <article class="nv-card">
+          <h3>Security by Absence</h3>
+          <p>依存関係を監査して安全にするのではなく、依存関係そのものを存在させません。Core の下に第三者の実行可能な依存グラフはありません。</p>
+        </article>
+        <article class="nv-card">
+          <h3>Semantics over Features</h3>
+          <p>実現できる UI の数より、正しい HTML の意味論を優先します。ネイティブで実現できない UI は、CSS hack で再現せず提供しません。</p>
+        </article>
+        <article class="nv-card">
+          <h3>Progressive Enhancement</h3>
+          <p>高度な CSS 機能は「後付け」で強化します。対応していない環境でも、コンテンツと基本操作は必ず維持されます。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="components" class="nv-container nv-stack-lg" aria-labelledby="components-title" style="padding-block: var(--nv-space-8)">
+      <h2 id="components-title">コンポーネント</h2>
+      <p>このページの UI はすべて HTML + nativum.css だけで動作します。ボタン、ダイアログ、ドロップダウン、アコーディオンを実際に操作できます。</p>
+
+      <div class="nv-grid">
+        <article class="nv-card nv-stack-sm">
+          <h3>ボタンとバッジ</h3>
+          <div class="nv-cluster">
+            <button>Default</button>
+            <button class="nv-primary">Primary</button>
+            <button disabled>Disabled</button>
+          </div>
+          <div class="nv-cluster">
+            <span class="nv-badge">Neutral</span>
+            <span class="nv-badge nv-badge-primary">Primary</span>
+            <span class="nv-badge nv-badge-success">Success</span>
+            <span class="nv-badge nv-badge-warning">Warning</span>
+            <span class="nv-badge nv-badge-danger">Danger</span>
+          </div>
+        </article>
+
+        <article class="nv-card nv-stack-sm">
+          <h3>通知</h3>
+          <div class="nv-notice nv-notice-info" role="status">情報を伝える通知です。</div>
+          <div class="nv-notice nv-notice-success" role="status">操作が正常に完了しました。</div>
+          <div class="nv-notice nv-notice-warning" role="status">セッションがまもなく失効します。</div>
+        </article>
+
+        <article class="nv-card nv-stack-sm">
+          <h3>ダイアログ</h3>
+          <p class="nv-text-muted">
+            ネイティブの <code>&lt;dialog&gt;</code> を <code>command</code> / <code>commandfor</code> で宣言的に操作します。
+          </p>
+          <button commandfor="demo-dialog" command="show-modal">ダイアログを開く</button>
+          <dialog id="demo-dialog" closedby="any">
+            <header>
+              <h3>Nativum ダイアログ</h3>
+            </header>
+            <p>
+              <code>&lt;dialog&gt;</code> はフォーカストラップ・背景の inert 化・Esc キー操作を
+              ブラウザが標準で提供します。JavaScript は不要です。
+            </p>
+            <footer>
+              <button commandfor="demo-dialog" command="close">閉じる</button>
+            </footer>
+          </dialog>
+        </article>
+
+        <article class="nv-card nv-stack-sm">
+          <h3>ドロップダウン</h3>
+          <p class="nv-text-muted">
+            Popover API + CSS Anchor Positioning によるメニュー。トリガーをクリックして開閉できます。
+          </p>
+          <div style="--nv-anchor: --nv-anchor-demo">
+            <button class="nv-dropdown-trigger" popovertarget="demo-menu" aria-haspopup="true">
+              メニューを開く
+            </button>
+            <div id="demo-menu" class="nv-dropdown" popover>
+              <div class="nv-stack-sm">
+                <a href="#features">特徴</a>
+                <a href="#components">コンポーネント</a>
+                <a href="#install">導入</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="nv-card nv-stack-sm">
+          <h3>アコーディオン</h3>
+          <div class="nv-accordion">
+            <details>
+              <summary>実行時に JavaScript はありますか?</summary>
+              <p>ありません。Nativum Core は HTML と CSS のみです。</p>
+            </details>
+            <details>
+              <summary>依存パッケージは?</summary>
+              <p>ありません。npm などで配布する場合も dependencies は空です。</p>
+            </details>
+            <details>
+              <summary>フレームワークと併用できますか?</summary>
+              <p>React / Vue / Astro などからも class を付けるだけで利用できます。</p>
+            </details>
+          </div>
+        </article>
+
+        <article class="nv-card nv-stack-sm">
+          <h3>テーブル</h3>
+          <div class="nv-table-scroll">
+            <table class="nv-table-striped">
+              <caption>コンポーネントの状態</caption>
+              <thead>
+                <tr>
+                  <th scope="col">コンポーネント</th>
+                  <th scope="col">Primitive</th>
+                  <th scope="col">状態</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Dialog</th>
+                  <td><code>&lt;dialog&gt;</code></td>
+                  <td><span class="nv-badge nv-badge-success">対応</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Dropdown</th>
+                  <td><code>[popover]</code></td>
+                  <td><span class="nv-badge nv-badge-success">対応</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Tabs</th>
+                  <td>—</td>
+                  <td><span class="nv-badge nv-badge-danger">非対応</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="nv-text-muted">
+            Tabs はネイティブに実現できないため提供しません。radio hack などの CSS hack で再現しない方針です。
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="install" class="nv-container nv-stack-lg" aria-labelledby="install-title" style="padding-block: var(--nv-space-8)">
+      <h2 id="install-title">導入</h2>
+      <p><code>nativum.css</code> を読み込むだけです。ビルドステップもインストールスクリプトもありません。</p>
+      <ol>
+        <li>Release から <code>nativum.css</code> を取得する (git clone / vendoring / npm など、配布方法は自由)</li>
+        <li>サイトの静的アセットとして配置する</li>
+        <li>HTML に <code>&lt;link&gt;</code> で読み込む</li>
+      </ol>
+      <pre><code>&lt;link rel="stylesheet" href="assets/css/nativum.css"&gt;</code></pre>
+      <div class="nv-notice nv-notice-info" role="status">
+        ホスト側の JavaScript (React など) は禁止されません。Nativum は JavaScript を「要求しない」だけです。
+      </div>
+    </section>
+
+    <section id="faq" class="nv-container nv-stack-lg" aria-labelledby="faq-title" style="padding-block: var(--nv-space-8)">
+      <h2 id="faq-title">FAQ</h2>
+      <div class="nv-accordion" style="margin-block-end: var(--nv-space-4)">
+        <details name="faq">
+          <summary>実行時に JavaScript は必要ですか?</summary>
+          <p>不要です。Nativum Core は HTML + CSS のみで構成され、実行時の依存グラフはゼロです。</p>
+        </details>
+        <details name="faq">
+          <summary>React / Vue などのフレームワークと併用できますか?</summary>
+          <p>できます。Nativum はクラス名を適用するだけの passive な CSS 設計システムです。既存のアプリに新たな UI ランタイムの依存は追加しません。</p>
+        </details>
+        <details name="faq">
+          <summary>配布方法に制限はありますか?</summary>
+          <p>ありません。Git clone / vendoring / GitHub Releases / npm / JSR / Cargo / CDN など、どの形式でも同じ <code>nativum.css</code> として動作します。</p>
+        </details>
+        <details name="faq">
+          <summary>タブ UI は使えますか?</summary>
+          <p>提供していません。タブはネイティブの HTML primitive が存在しないため、radio hack などの CSS hack で再現しない方針です。</p>
+        </details>
+        <details name="faq">
+          <summary>ダークモードには対応していますか?</summary>
+          <p>対応しています。OS の設定に合わせて light / dark を自動切替します。サーバー側で <code>data-theme</code> 属性を使って明示的に強制することもできます。</p>
+        </details>
+        <details name="faq">
+          <summary>ライセンスは何ですか?</summary>
+          <p>MIT です。商用利用を含め自由に利用できます。</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="nv-container" style="padding-block: var(--nv-space-8)">
+    <hr>
+    <div class="nv-cluster-between nv-cluster">
+      <p class="nv-text-muted" style="margin-block-end: 0">
+        Nativum 0.1.0 — Modern UI, by the Web Platform. &copy; 2026
+      </p>
+      <nav aria-label="フッターナビゲーション">
+        <div class="nv-cluster">
+          <a href="https://github.com/hnkNkm/nativum">GitHub</a>
+          <a href="https://github.com/hnkNkm/nativum/blob/main/LICENSE">MIT License</a>
+        </div>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,64 @@
+/* Nativum 公式サイト サンプル — サイト固有スタイル */
+/* 原則: nv-* クラスの再定義はしない。トークン上書きとLP固有の微調整のみ。 */
+
+/* --- スキップリンク (フォーカス時のみ表示) --- */
+.skip-link {
+  position: absolute;
+  inset-block-start: var(--nv-space-4);
+  inset-inline-start: var(--nv-space-4);
+  z-index: 100;
+  padding: var(--nv-space-2) var(--nv-space-4);
+  background-color: var(--nv-color-surface);
+  border: var(--nv-border-width) solid var(--nv-color-border-strong);
+  border-radius: var(--nv-radius-md);
+  box-shadow: var(--nv-shadow-md);
+  transform: translateY(-200%);
+  transition: transform var(--nv-duration-fast) var(--nv-ease-standard);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+/* --- Hero --- */
+.hero {
+  padding-block: var(--nv-space-16) var(--nv-space-12);
+}
+
+.hero h1 {
+  font-size: clamp(var(--nv-font-size-4xl), 4vw + 1rem, 3.5rem);
+  text-align: center;
+}
+
+.hero p {
+  text-align: center;
+}
+
+/* --- Hero 統計 (dl) --- */
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--nv-space-4) var(--nv-space-12);
+  margin: 0;
+  padding: var(--nv-space-6);
+  background-color: var(--nv-color-surface);
+  border: var(--nv-border-width) solid var(--nv-color-border);
+  border-radius: var(--nv-radius-lg);
+}
+
+.hero-stats div {
+  text-align: center;
+}
+
+.hero-stats dt {
+  font-size: var(--nv-font-size-3xl);
+  font-weight: var(--nv-font-weight-semibold);
+  color: var(--nv-color-primary);
+}
+
+.hero-stats dd {
+  margin: 0;
+  font-size: var(--nv-font-size-sm);
+  color: var(--nv-color-text-muted);
+}
