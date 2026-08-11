@@ -12,7 +12,10 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        nativum-css = "${nativum.packages.${system}.default}/nativum.css";
+        # 公式 Release の成果物 (dist/nativum.css) は git 管理されているため、
+        # nativum パッケージのビルドを経ずにソースから直接取得する。
+        # パッケージビルドは Nix sandbox (Linux) で /usr/bin/env 不在のため失敗する。
+        nativum-css = "${nativum}/dist/nativum.css";
       in
       {
         # サイト本体: public/ のコンテンツ + 公式 Release の nativum.css を組み立てる

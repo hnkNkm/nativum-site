@@ -16,7 +16,7 @@ serve.sh                       # ローカル確認用サーバー
 .github/workflows/pages.yml    # GitHub Pages デプロイ (Nix build → upload)
 ```
 
-`nativum.css` はリポジトリにコミットせず、**公式 Release (v0.1.0) を Nix flake input として固定参照**します。ビルド時に `nativum` パッケージの `dist/nativum.css` が `public/` に合成されます。
+`nativum.css` はリポジトリにコミットせず、**公式 Release (v0.1.0) を Nix flake input として固定参照**します。ビルド時に input のソースに含まれる `dist/nativum.css` (Release と SHA256 一致) を `public/` に合成します。
 
 ## 開発
 
