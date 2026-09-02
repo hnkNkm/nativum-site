@@ -75,3 +75,14 @@
   font-size: var(--nv-font-size-sm);
   color: var(--nv-color-text-muted);
 }
+/* --- コンポーネントデモ --- */
+.site-dialog {
+  /* Safari などで modal dialog に設定される inset: 0 / margin: 0 を上書きし、中央配置する。 */
+  margin: auto;
+}
+
+.site-table th,
+.site-table td {
+  /* カード幅が狭いデスクトップでも、セルの内容を保ったまま表を収める。 */
+  padding-inline: var(--nv-space-2);
+}
